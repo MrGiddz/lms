@@ -1,4 +1,5 @@
 import { db } from "@/lib/db";
+import { isTeacher } from "@/lib/teacher";
 import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 
@@ -29,7 +30,7 @@ export async function POST(
         data: {
             url,
             name: url.split('/').pop(),
-            courseid: params.courseId
+            courseId: params.courseId
         }
     })
     return NextResponse.json(attachment);

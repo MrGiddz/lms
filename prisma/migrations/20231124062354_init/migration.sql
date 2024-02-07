@@ -68,21 +68,21 @@ CREATE TABLE `MuxData` (
 -- CreateTable
 CREATE TABLE `UserProgress` (
     `id` VARCHAR(191) NOT NULL,
-    `userid` VARCHAR(191) NOT NULL,
+    `userId` VARCHAR(191) NOT NULL,
     `chapterId` VARCHAR(191) NOT NULL,
     `isCompleted` BOOLEAN NOT NULL DEFAULT false,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updatedAt` DATETIME(3) NOT NULL,
 
     INDEX `UserProgress_chapterId_idx`(`chapterId`),
-    UNIQUE INDEX `UserProgress_userid_chapterId_key`(`userid`, `chapterId`),
+    UNIQUE INDEX `UserProgress_userid_chapterId_key`(`userId`, `chapterId`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
 CREATE TABLE `Purchase` (
     `id` VARCHAR(191) NOT NULL,
-    `userid` VARCHAR(191) NOT NULL,
+    `userId` VARCHAR(191) NOT NULL,
     `courseId` VARCHAR(191) NOT NULL,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updatedAt` DATETIME(3) NOT NULL,
@@ -94,12 +94,12 @@ CREATE TABLE `Purchase` (
 -- CreateTable
 CREATE TABLE `StripeCustomer` (
     `id` VARCHAR(191) NOT NULL,
-    `userid` VARCHAR(191) NOT NULL,
+    `userId` VARCHAR(191) NOT NULL,
     `stripeCustomerid` VARCHAR(191) NOT NULL,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updatedAt` DATETIME(3) NOT NULL,
 
-    UNIQUE INDEX `StripeCustomer_userid_key`(`userid`),
+    UNIQUE INDEX `StripeCustomer_userid_key`(`userId`),
     UNIQUE INDEX `StripeCustomer_stripeCustomerid_key`(`stripeCustomerid`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

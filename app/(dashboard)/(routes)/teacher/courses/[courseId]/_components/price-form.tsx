@@ -78,8 +78,9 @@ const PriceForm = ({ initialData, courseId }: PriceFormProps) => {
             "text-sm mt-2",
             !initialData.price && "text-slate-500 italic"
           )}
+          suppressHydrationWarning
         >
-          {initialData.price ? formatPrice(initialData.price) :  "No price"}
+          {initialData.price ? formatPrice(initialData.price) : "No price"}
         </p>
       )}
       {isEditing && (

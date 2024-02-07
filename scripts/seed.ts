@@ -2,7 +2,18 @@ const { PrismaClient } = require("@prisma/client");
 
 const database = new PrismaClient();
 
-async function main() {
+async function deleteExisting() {
+    try {
+        await database.category.deleteMany();
+        console.log("All deleted");
+    } catch (error) {
+        console.log("Error deleting existing")
+    }finally{
+        seed();
+    }
+}
+
+async function seed() {
     try {
         await database.category.createMany({
             data: [
@@ -13,6 +24,8 @@ async function main() {
                 {name: "Chemistry"},
                 {name: "Anatomy"},
                 {name: "Psychology"},
+                {name: "Photography"},
+                {name: "Engineering"},
                 {name: "Filming"},
             ]
         })
@@ -24,4 +37,4 @@ async function main() {
     }
 }
 
-main();
+deleteExisting();
