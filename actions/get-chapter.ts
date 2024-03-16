@@ -1,5 +1,5 @@
 import { db } from "@/lib/db";
-import { Attachment, Chapter } from "@prisma/client";
+import { LMSAttachment, LMSChapter } from "@prisma/client";
 
 interface GetChapterProps {
   userId: string;
@@ -13,13 +13,13 @@ export const getChapter = async ({
   chapterId,
 }: GetChapterProps) => {
   try {
-    const purchase = await db.purchase.findUnique({
+    const purchase = await db.lMSPurchase.findUnique({
       where: { 
         userId_courseId: {userId, courseId }
       },
     });
 
-    const course = await db.course.findUnique({
+    const course = await db.lMSCourse.findUnique({
         where: {
             isPublished: true,
             id: courseId
@@ -30,7 +30,7 @@ export const getChapter = async ({
     });
 
 
-    const chapter = await db.chapter.findUnique({
+    const chapter = await db.lMSChapter.findUnique({
         where: {
             id: chapterId,
             isPublished: true
@@ -43,12 +43,12 @@ export const getChapter = async ({
     }
 
     let muxData = null;
-    let attachments: Attachment[] = [];
-    let nextChapter: Chapter | null = null;
+    let attachments: LMSAttachment[] = [];
+    let nextChapter: LMSChapter | null = null;
 
 
     if(purchase) {
-        attachments = await db.attachment.findMany({
+        attachments = await db.lMSAttachment.findMany({
             where: {
                 courseId
             }
@@ -56,13 +56,13 @@ export const getChapter = async ({
     }
 
     if(chapter.isFree || purchase) {
-      muxData = await db.muxData.findUnique({
+      muxData = await db.lMSMuxData.findUnique({
         where: {
           chapterId
         }
       });
 
-      nextChapter = await db.chapter.findFirst({
+      nextChapter = await db.lMSChapter.findFirst({
         where: {
           courseId,
           isPublished: true,
@@ -76,7 +76,7 @@ export const getChapter = async ({
       })
     }
 
-    const userProgress = await db.userProgress.findUnique({
+    const userProgress = await db.lMSUserProgress.findUnique({
       where: {
         userId_chapterId: {
           userId, chapterId

@@ -15,7 +15,7 @@ export async function POST(
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-    const courseOwner = await db.course.findUnique({
+    const courseOwner = await db.lMSCourse.findUnique({
       where: {
         id: params.courseId,
         userId,
@@ -26,7 +26,7 @@ export async function POST(
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-    const lastChapter = await db.chapter.findFirst({
+    const lastChapter = await db.lMSChapter.findFirst({
       where: {
         courseId: params.courseId,
       },
@@ -37,7 +37,7 @@ export async function POST(
 
     const newPosition = lastChapter ? lastChapter.position + 1 : 1;
 
-    const chapter = await db.chapter.create({
+    const chapter = await db.lMSChapter.create({
       data: {
         title,
         courseId: params.courseId,

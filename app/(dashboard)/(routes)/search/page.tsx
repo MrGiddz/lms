@@ -17,7 +17,7 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
   const { userId } = auth();
 
   if (!userId) return redirect("/");
-  const categories = await db.category.findMany({
+  const categories = await db.lMSCategory.findMany({
     orderBy: {
       name: "asc",
     },

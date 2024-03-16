@@ -6,12 +6,12 @@ import { File, ImageIcon, Loader2, Pencil, PlusCircle, X } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import { Attachment, Course } from "@prisma/client";
+import { LMSAttachment, LMSCourse } from "@prisma/client";
 import { FileUpload } from "@/components/file-upload";
 import Image from "next/image";
 
 interface AttachmentFormProps {
-  initialData: Course & { attachments: Attachment[] };
+  initialData: LMSCourse & { attachments: LMSAttachment[] };
   courseId: string;
 }
 
@@ -49,10 +49,10 @@ const AttachmentForm = ({ initialData, courseId }: AttachmentFormProps) => {
       router.refresh();
     } catch (error) {
       toast.error("Something went wrong");
-    }finally{
+    } finally {
       setDeletingId(null);
     }
-  }
+  };
   return (
     <div className="mt-6 border bg-slate-100 rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
@@ -88,20 +88,24 @@ const AttachmentForm = ({ initialData, courseId }: AttachmentFormProps) => {
               {initialData.attachments.map((attachment) => (
                 <div
                   key={attachment.id}
-                  className="flex items-center p-3 w-full bg-sky-100 border-sky-200 border text-sky-700 rounded-md">
-                    <File className="h-4 w-4 mr-2 flex-shrink-0" />
-                    <p className="text-xs line-clamp-1">{attachment.name}</p>
-                    {deletingId === attachment.id && (
-                      <div>
-                        <Loader2 className="h-4 w-4 animate-spin ml-2" />
-                      </div>
-                    )}
-                    {deletingId !== attachment.id && (
-                      <button className="ml-auto hover:opacity-75 hover:text-red-500 transition" onClick={() => onDelete(attachment.id)}>
-                        <X className="h-4 w-4" />
-                      </button>
-                    )}
-                  </div>
+                  className="flex items-center p-3 w-full bg-sky-100 border-sky-200 border text-sky-700 rounded-md"
+                >
+                  <File className="h-4 w-4 mr-2 flex-shrink-0" />
+                  <p className="text-xs line-clamp-1">{attachment.name}</p>
+                  {deletingId === attachment.id && (
+                    <div>
+                      <Loader2 className="h-4 w-4 animate-spin ml-2" />
+                    </div>
+                  )}
+                  {deletingId !== attachment.id && (
+                    <button
+                      className="ml-auto hover:opacity-75 hover:text-red-500 transition"
+                      onClick={() => onDelete(attachment.id)}
+                    >
+                      <X className="h-4 w-4" />
+                    </button>
+                  )}
+                </div>
               ))}
             </div>
           )}

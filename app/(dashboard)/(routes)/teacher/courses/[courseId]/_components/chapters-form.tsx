@@ -18,11 +18,11 @@ import { Input } from "@/components/ui/input";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Chapter, Course } from "@prisma/client";
+import { LMSChapter, LMSCourse } from "@prisma/client";
 import { ChaptersList } from "./chapters-list";
 
 interface ChaptersFormProps {
-  initialData: Course & { chapters: Chapter[] };
+  initialData: LMSCourse & { chapters: LMSChapter[] };
   courseId: string;
 }
 
@@ -76,7 +76,7 @@ const ChaptersForm = ({ initialData, courseId }: ChaptersFormProps) => {
   };
 
   const onEdit = (id: string) => {
-    console.log({link: `/teacher/courses/${courseId}/chapters/${id}`})
+    console.log({ link: `/teacher/courses/${courseId}/chapters/${id}` });
     router.push(`/teacher/courses/${courseId}/chapters/${id}`);
   };
 

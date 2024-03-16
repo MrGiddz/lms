@@ -13,7 +13,7 @@ export async function PATCH(
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-    const ownCourse = await db.course.findUnique({
+    const ownCourse = await db.lMSCourse.findUnique({
       where: {
         id: params.courseId,
         userId,
@@ -23,14 +23,14 @@ export async function PATCH(
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-    const chapter = await db.chapter.findUnique({
+    const chapter = await db.lMSChapter.findUnique({
       where: {
         id: params.chapterId,
         courseId: params.courseId,
       },
     });
 
-    const muxData = await db.muxData.findUnique({
+    const muxData = await db.lMSMuxData.findUnique({
       where: {
         chapterId: params.chapterId,
       },
@@ -46,7 +46,7 @@ export async function PATCH(
       return new NextResponse("Missing required fields", { status: 400 });
     }
 
-    const publishChapter = await db.chapter.update({
+    const publishChapter = await db.lMSChapter.update({
       where: {
         id: params.chapterId,
         courseId: params.courseId,

@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Course } from "@prisma/client";
+import { LMSCourse } from "@prisma/client";
 import { ColumnDef, createColumnHelper } from "@tanstack/react-table";
 import { ArrowUpDown, MoreHorizontal, Pencil } from "lucide-react";
 import {
@@ -14,9 +14,9 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 
-const columnHelper = createColumnHelper<Course>();
+const columnHelper = createColumnHelper<LMSCourse>();
 
-export const columns: ColumnDef<Course>[] = [
+export const columns: ColumnDef<LMSCourse>[] = [
   {
     accessorKey: "title",
     header: ({ column }) => {

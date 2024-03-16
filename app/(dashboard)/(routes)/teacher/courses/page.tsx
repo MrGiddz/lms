@@ -8,12 +8,14 @@ import { db } from "@/lib/db";
 
 const Courses = async () => {
   const {userId} = auth();
+  console.log({userId})
+
 
   if(!userId) {
     return redirect("/");
   }
 
-  const courses = await db.course.findMany({
+  const courses = await db.lMSCourse.findMany({
     where: {
       userId
     },

@@ -19,12 +19,12 @@ import { Textarea } from "@/components/ui/textarea";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Chapter } from "@prisma/client";
+import { LMSChapter } from "@prisma/client";
 import { Editor } from "@/components/editor";
 import { Preview } from "@/components/preview";
 
 interface ChapterDescriptionFormProps {
-  initialData: Chapter;
+  initialData: LMSChapter;
   courseId: string;
   chapterId: string;
 }
@@ -33,7 +33,11 @@ const formSchema = z.object({
   description: z.string().min(1),
 });
 
-const ChapterDescriptionForm = ({ initialData, courseId, chapterId }: ChapterDescriptionFormProps) => {
+const ChapterDescriptionForm = ({
+  initialData,
+  courseId,
+  chapterId,
+}: ChapterDescriptionFormProps) => {
   const [isEditing, setIsEditing] = useState(false);
 
   const toggleEdit = () => setIsEditing((current) => !current);
@@ -49,7 +53,10 @@ const ChapterDescriptionForm = ({ initialData, courseId, chapterId }: ChapterDes
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.patch(`/api/courses/${courseId}/chapters/${chapterId}`, values);
+      await axios.patch(
+        `/api/courses/${courseId}/chapters/${chapterId}`,
+        values
+      );
       toast.success("Chapter successfully updated.");
       toggleEdit();
       router.refresh();
@@ -82,9 +89,9 @@ const ChapterDescriptionForm = ({ initialData, courseId, chapterId }: ChapterDes
           )}
         >
           {!initialData.description && "No description"}
-          {
-            initialData.description && <Preview value={initialData.description}/>
-          }
+          {initialData.description && (
+            <Preview value={initialData.description} />
+          )}
         </div>
       )}
       {isEditing && (
@@ -99,9 +106,7 @@ const ChapterDescriptionForm = ({ initialData, courseId, chapterId }: ChapterDes
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Editor
-                      {...field}
-                    />
+                    <Editor {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

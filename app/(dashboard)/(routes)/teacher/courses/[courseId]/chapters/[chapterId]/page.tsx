@@ -22,7 +22,7 @@ const ChapterIdPage = async ({
     return redirect("/");
   }
 
-  const chapter = await db.chapter.findUnique({
+  const chapter = await db.lMSChapter.findUnique({
     where: {
       id: params.chapterId,
       courseId: params.courseId,

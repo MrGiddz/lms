@@ -12,7 +12,7 @@ export async function POST (req: Request) {
             return new NextResponse("Unauthorized", {status: 401})
         }
 
-        const course = await db.course.create({
+        const course = await db.lMSCourse.create({
             data: {
                 userId,
                 title

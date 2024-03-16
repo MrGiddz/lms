@@ -15,7 +15,7 @@ export async function PUT(
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-    const userProgress = await db.userProgress.upsert({
+    const userProgress = await db.lMSUserProgress.upsert({
         where: {
             userId_chapterId: {
                 userId,

@@ -1,6 +1,6 @@
 "use client";
 
-import { Category } from "@prisma/client";
+import { LMSCategory } from "@prisma/client";
 import {
   FcEngineering,
   FcFilmReel,
@@ -13,34 +13,40 @@ import {
   FcAdvertising,
   FcBiomass,
   FcBiotech,
-  
 } from "react-icons/fc";
 import { IconType } from "react-icons/lib";
 import CategoryItem from "./category-item";
 
 interface CategoriesProps {
-  items: Category[];
+  items: LMSCategory[];
 }
 
-const iconMap: Record<Category["name"], IconType> = {
-  "Music": FcMusic,
-  "Photography": FcOldTimeCamera,
-  "Fitness": FcSportsMode,
-  "Anatomy": FcBiotech,
-  "Accounting": FcSalesPerformance,
+const iconMap: Record<LMSCategory["name"], IconType> = {
+  Music: FcMusic,
+  Photography: FcOldTimeCamera,
+  Fitness: FcSportsMode,
+  Anatomy: FcBiotech,
+  Accounting: FcSalesPerformance,
   "Computer Science": FcMultipleDevices,
-  "Filming": FcFilmReel,
-  "Engineering": FcEngineering,
-  "Psychology": FcCloseUpMode,
-  "Communications": FcAdvertising,
-  "Chemistry": FcBiomass
+  Filming: FcFilmReel,
+  Engineering: FcEngineering,
+  Psychology: FcCloseUpMode,
+  Communications: FcAdvertising,
+  Chemistry: FcBiomass,
 };
 const Categories = ({ items }: CategoriesProps) => {
-  return <div className="flex items-center gap-x-2 overflow-x-auto pb-2">
-    {items.map(item => (
-        <CategoryItem key={item.id} label={item.name} icon={iconMap[item.name]} value={item.id}/>
-    ))}
-  </div>;
+  return (
+    <div className="flex items-center gap-x-2 overflow-x-auto pb-2">
+      {items.map((item) => (
+        <CategoryItem
+          key={item.id}
+          label={item.name}
+          icon={iconMap[item.name]}
+          value={item.id}
+        />
+      ))}
+    </div>
+  );
 };
 
 export default Categories;

@@ -1,8 +1,6 @@
 import Stripe from "stripe";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
-
-import { stripe } from "@/lib/stripe";
 import { db } from "@/lib/db";
 
 export async function POST(req: Request) {
@@ -33,7 +31,7 @@ export async function POST(req: Request) {
       });
     }
 
-    await db.purchase.create({
+    await db.lMSPurchase.create({
         data: {
             courseId,
             userId

@@ -24,7 +24,7 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
   if (!userId) {
     return redirect("/");
   }
-  const course = await db.course.findUnique({
+  const course = await db.lMSCourse.findUnique({
     where: {
       id: params.courseId,
       userId,
@@ -43,7 +43,7 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
     },
   });
 
-  const categories = await db.category.findMany({
+  const categories = await db.lMSCategory.findMany({
     orderBy: {
       name: "asc",
     },

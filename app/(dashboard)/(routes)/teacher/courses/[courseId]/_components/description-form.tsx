@@ -19,10 +19,10 @@ import { Textarea } from "@/components/ui/textarea";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Course } from "@prisma/client";
+import { LMSCourse } from "@prisma/client";
 
 interface DescriptionFormProps {
-  initialData: Course;
+  initialData: LMSCourse;
   courseId: string;
 }
 

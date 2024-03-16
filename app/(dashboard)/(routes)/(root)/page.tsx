@@ -10,6 +10,8 @@ import { InfoCard } from "./_components/info";
 export default async function Home() {
   const { userId } = auth();
 
+  console.log({userId})
+
   if (!userId) {
     return redirect("/");
   }

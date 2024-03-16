@@ -21,7 +21,7 @@ export async function DELETE(
     }
 
     console.log("here to go");
-    const course = await db.course.findUnique({
+    const course = await db.lMSCourse.findUnique({
       where: {
         id: params.courseId,
         userId,
@@ -45,7 +45,7 @@ export async function DELETE(
       }
     }
 
-    const deletedCourse = await db.course.delete({
+    const deletedCourse = await db.lMSCourse.delete({
       where: {
         id: params.courseId,
       },
@@ -71,7 +71,7 @@ export async function PATCH(
       return new NextResponse("Unathorized", { status: 401 });
     }
 
-    const course = await db.course.update({
+    const course = await db.lMSCourse.update({
       where: {
         id: courseId,
         userId,

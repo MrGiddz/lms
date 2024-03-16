@@ -19,13 +19,13 @@ import { Textarea } from "@/components/ui/textarea";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Course } from "@prisma/client";
+import { LMSCourse } from "@prisma/client";
 import { Combobox } from "@/components/ui/combobox";
 
 interface CategoryFormProps {
-  initialData: Course;
+  initialData: LMSCourse;
   courseId: string;
-  options: { label: string; value: string; }[];
+  options: { label: string; value: string }[];
 }
 
 const formSchema = z.object({
@@ -106,7 +106,7 @@ const CategoryForm = ({
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Combobox options={...options} {...field}/>
+                    <Combobox {...options} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

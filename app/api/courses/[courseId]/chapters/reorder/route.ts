@@ -13,7 +13,7 @@ export async function PUT(
 
     const { list } = await req.json();
 
-    const ownCourse = await db.course.findUnique({
+    const ownCourse = await db.lMSCourse.findUnique({
       where: {
         id: params.courseId,
         userId,
@@ -25,7 +25,7 @@ export async function PUT(
     }
 
     for (let item of list) {
-      await db.chapter.update({
+      await db.lMSChapter.update({
         where: { id: item.id },
         data: { position: item.position },
       });

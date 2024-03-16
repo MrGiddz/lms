@@ -15,7 +15,7 @@ export async function POST(
       return new NextResponse("Unathorized", { status: 401 });
     }
 
-    const courseOwner = await db.course.findUnique({
+    const courseOwner = await db.lMSCourse.findUnique({
         where: { 
             id: params.courseId, 
             userId
@@ -26,7 +26,7 @@ export async function POST(
         return new NextResponse("Unathorized", { status: 401 })
     }
 
-    const attachment = await db.attachment.create({
+    const attachment = await db.lMSAttachment.create({
         data: {
             url,
             name: url.split('/').pop(),

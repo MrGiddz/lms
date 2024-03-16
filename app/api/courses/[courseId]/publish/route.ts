@@ -14,7 +14,7 @@ export async function PATCH(
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-    const course = await db.course.findUnique({
+    const course = await db.lMSCourse.findUnique({
       where: {
         id: params.courseId,
         userId,
@@ -46,7 +46,7 @@ export async function PATCH(
       return new NextResponse("Missing required fields", { status: 401 });
     }
 
-    const publishedCourse = await db.course.update({
+    const publishedCourse = await db.lMSCourse.update({
       where: {
         id: params.courseId,
         userId,

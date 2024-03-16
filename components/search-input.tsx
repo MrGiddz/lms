@@ -18,10 +18,6 @@ export const SearchInput = () => {
   const currentCategoryId = searchParams.get("categoryId"); 
 
   useEffect(() => {
-    
-    console.log({debouncedValue})
-
- 
       const url = qs.stringifyUrl(
         {
           url: pathname,

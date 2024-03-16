@@ -1,9 +1,9 @@
-import { Category, Course } from "@prisma/client";
+import { LMSCategory, LMSCourse } from "@prisma/client";
 import { getProgress } from "@/actions/get-progress";
 import { db } from "@/lib/db";
 
-type CourseWithProgressWithCategory = Course & {
-  category: Category | null;
+type CourseWithProgressWithCategory = LMSCourse & {
+  category: LMSCategory | null;
   chapters: { id: string }[];
   progress: number | null;
 };
@@ -20,7 +20,7 @@ export const getCourses = async ({
   categoryId,
 }: GetCourses): Promise<CourseWithProgressWithCategory[]> => {
   try {
-    const courses = await db.course.findMany({
+    const courses = await db.lMSCourse.findMany({
       where: {
         isPublished: true,
         title: {

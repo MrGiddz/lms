@@ -18,11 +18,11 @@ import { Input } from "@/components/ui/input";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Course } from "@prisma/client";
+import { LMSCourse } from "@prisma/client";
 import { formatPrice } from "@/lib/format";
 
 interface PriceFormProps {
-  initialData: Course;
+  initialData: LMSCourse;
   courseId: string;
 }
 

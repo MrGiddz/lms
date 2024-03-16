@@ -13,7 +13,7 @@ export async function PATCH(
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-    const ownCourse = await db.course.findUnique({
+    const ownCourse = await db.lMSCourse.findUnique({
       where: {
         id: params.courseId,
         userId,
@@ -23,7 +23,7 @@ export async function PATCH(
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-    const unpublishChapter = await db.chapter.update({
+    const unpublishChapter = await db.lMSChapter.update({
       where: {
         id: params.chapterId,
         courseId: params.courseId,
@@ -33,7 +33,7 @@ export async function PATCH(
       },
     });
 
-    const publishedChaptersInCourse = await db.chapter.findMany({
+    const publishedChaptersInCourse = await db.lMSChapter.findMany({
       where: {
         courseId: params.chapterId,
         isPublished: true,
@@ -41,7 +41,7 @@ export async function PATCH(
     });
 
     if (!publishedChaptersInCourse.length) {
-      await db.course.update({
+      await db.lMSCourse.update({
         where: {
           id: params.courseId,
         },

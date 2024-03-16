@@ -1,8 +1,8 @@
 import { db } from "@/lib/db";
-import { Course, Purchase } from "@prisma/client";
+import { LMSCourse, LMSPurchase } from "@prisma/client";
 
-type PurchaseWithCourse = Purchase & {
-  course: Course;
+type PurchaseWithCourse = LMSPurchase & {
+  course: LMSCourse;
 };
 
 const groupByCourse = (purchases: PurchaseWithCourse[]) => {
@@ -21,7 +21,7 @@ const groupByCourse = (purchases: PurchaseWithCourse[]) => {
 
 export const getAnalytics = async (userId: string) => {
   try {
-    const purchases = await db.purchase.findMany({
+    const purchases = await db.lMSPurchase.findMany({
       where: {
         course: {
           userId,

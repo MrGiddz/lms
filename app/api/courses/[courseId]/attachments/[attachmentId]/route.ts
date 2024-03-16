@@ -14,7 +14,7 @@ export async function DELETE(
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-    const courseOwner = await db.course.findUnique({
+    const courseOwner = await db.lMSCourse.findUnique({
       where: {
         id: params.courseId,
         userId,
@@ -25,7 +25,7 @@ export async function DELETE(
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-    const attachment = await db.attachment.delete({
+    const attachment = await db.lMSAttachment.delete({
       where: {
         courseId: params.courseId,
         id: params.attachmentId,

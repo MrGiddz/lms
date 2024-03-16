@@ -1,5 +1,5 @@
 -- CreateTable
-CREATE TABLE `Course` (
+CREATE TABLE `LMSCourse` (
     `id` VARCHAR(191) NOT NULL,
     `userId` VARCHAR(191) NOT NULL,
     `title` TEXT NOT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE `Course` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `Category` (
+CREATE TABLE `LMSCategory` (
     `id` VARCHAR(191) NOT NULL,
     `name` VARCHAR(191) NOT NULL,
 
@@ -25,7 +25,7 @@ CREATE TABLE `Category` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `Attachment` (
+CREATE TABLE `LMSAttachment` (
     `id` VARCHAR(191) NOT NULL,
     `name` VARCHAR(191) NOT NULL,
     `url` TEXT NULL,
@@ -38,7 +38,7 @@ CREATE TABLE `Attachment` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `Chapter` (
+CREATE TABLE `LMSChapter` (
     `id` VARCHAR(191) NOT NULL,
     `title` VARCHAR(191) NOT NULL,
     `description` TEXT NULL,
@@ -55,7 +55,7 @@ CREATE TABLE `Chapter` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `MuxData` (
+CREATE TABLE `LMSMuxData` (
     `id` VARCHAR(191) NOT NULL,
     `chapterId` VARCHAR(191) NOT NULL,
     `assetId` VARCHAR(191) NOT NULL,
@@ -66,7 +66,7 @@ CREATE TABLE `MuxData` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `UserProgress` (
+CREATE TABLE `LMSUserProgress` (
     `id` VARCHAR(191) NOT NULL,
     `userId` VARCHAR(191) NOT NULL,
     `chapterId` VARCHAR(191) NOT NULL,
@@ -80,7 +80,7 @@ CREATE TABLE `UserProgress` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `Purchase` (
+CREATE TABLE `LMSPurchase` (
     `id` VARCHAR(191) NOT NULL,
     `userId` VARCHAR(191) NOT NULL,
     `courseId` VARCHAR(191) NOT NULL,
@@ -92,7 +92,7 @@ CREATE TABLE `Purchase` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `StripeCustomer` (
+CREATE TABLE `LMSStripeCustomer` (
     `id` VARCHAR(191) NOT NULL,
     `userId` VARCHAR(191) NOT NULL,
     `stripeCustomerid` VARCHAR(191) NOT NULL,

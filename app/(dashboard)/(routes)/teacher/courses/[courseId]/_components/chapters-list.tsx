@@ -1,6 +1,6 @@
 "use client";
 
-import { Chapter } from "@prisma/client";
+import { LMSChapter } from "@prisma/client";
 import { useEffect, useState } from "react";
 import {
   DragDropContext,
@@ -13,7 +13,7 @@ import { Grip, Pencil } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 interface ChaptersListProps {
-  items: Chapter[];
+  items: LMSChapter[];
   onReorder: (updateData: { id: string; position: number }[]) => void;
   onEdit: (id: string) => void;
 }
@@ -55,7 +55,6 @@ export const ChaptersList = ({
 
     onReorder(bulkUpdateData);
   };
-
 
   if (!isMounted) {
     return null;

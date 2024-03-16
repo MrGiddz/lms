@@ -6,12 +6,12 @@ import { Pencil, PlusCircle, Video, VideoIcon } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import { Chapter, MuxData } from "@prisma/client";
+import { LMSChapter, LMSMuxData } from "@prisma/client";
 import MuxPlayer from "@mux/mux-player-react";
 import { FileUpload } from "@/components/file-upload";
 
 interface ChapterVideoFormProps {
-  initialData: Chapter & { muxData?: MuxData | null };
+  initialData: LMSChapter & { muxData?: LMSMuxData | null };
   courseId: string;
   chapterId: string;
 }

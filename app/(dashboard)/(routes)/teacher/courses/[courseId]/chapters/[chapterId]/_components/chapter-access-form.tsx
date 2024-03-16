@@ -20,13 +20,13 @@ import { Textarea } from "@/components/ui/textarea";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Chapter } from "@prisma/client";
+import { LMSChapter } from "@prisma/client";
 import { Editor } from "@/components/editor";
 import { Preview } from "@/components/preview";
 import { Checkbox } from "@/components/ui/checkbox";
 
 interface ChapterAccessFormProps {
-  initialData: Chapter;
+  initialData: LMSChapter;
   courseId: string;
   chapterId: string;
 }

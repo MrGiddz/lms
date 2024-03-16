@@ -15,14 +15,14 @@ export async function POST(
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-    const course = await db.course.findUnique({
+    const course = await db.lMSCourse.findUnique({
       where: {
         id: params.courseId,
         isPublished: true,
       },
     });
 
-    const purchase = await db.purchase.findUnique({
+    const purchase = await db.lMSPurchase.findUnique({
       where: {
         userId_courseId: {
           userId: user.id,
@@ -53,7 +53,7 @@ export async function POST(
       },
     ];
 
-    let stripeCustomer = await db.stripeCustomer.findUnique({
+    let stripeCustomer = await db.lMSStripeCustomer.findUnique({
       where: {
         userId: user.id,
       },
@@ -67,7 +67,7 @@ export async function POST(
         email: user.emailAddresses[0].emailAddress,
       });
 
-      stripeCustomer = await db.stripeCustomer.create({
+      stripeCustomer = await db.lMSStripeCustomer.create({
         data: {
           userId: user.id,
           stripeCustomerid: customer.id,

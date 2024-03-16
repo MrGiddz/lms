@@ -2,12 +2,12 @@ import { Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { CourseSidebar } from "./course-sidebar";
 
-import { Course, Chapter, UserProgress } from "@prisma/client";
+import { LMSCourse, LMSChapter, LMSUserProgress } from "@prisma/client";
 
 interface CourseSidebarProps {
-  course: Course & {
-    chapters: (Chapter & {
-      userProgress: UserProgress[] | null;
+  course: LMSCourse & {
+    chapters: (LMSChapter & {
+      userProgress: LMSUserProgress[] | null;
     })[];
   };
   progressCount: number;
