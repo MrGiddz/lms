@@ -14,8 +14,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { Pencil } from "lucide-react";
 import { useState } from "react";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -42,6 +40,7 @@ const CategoryForm = ({
   const [isEditing, setIsEditing] = useState(false);
 
   const toggleEdit = () => setIsEditing((current) => !current);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -67,6 +66,8 @@ const CategoryForm = ({
   const selectedOption = options.find(
     (option) => option.value === initialData.categoryId
   );
+
+  // console.log({options})
 
   return (
     <div className="mt-6 border bg-slate-100 rounded-md p-4">
@@ -103,14 +104,16 @@ const CategoryForm = ({
             <FormField
               control={form.control}
               name="categoryId"
-              render={({ field }) => (
+              render={({ field }) => {
+                console.log({field})
+                return (
                 <FormItem>
                   <FormControl>
-                    <Combobox {...options} {...field} />
+                    <Combobox options={options} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
-              )}
+              )}}
             />
             <div className="flex items-center gap-x-2">
               <Button disabled={!isValid || isSubmitting}>Save</Button>

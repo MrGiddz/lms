@@ -4,7 +4,7 @@ const database = new PrismaClient();
 
 async function deleteExisting() {
     try {
-        await database.category.deleteMany();
+        await database.LMSCategory.deleteMany();
         console.log("All deleted");
     } catch (error) {
         console.log("Error deleting existing")
@@ -15,7 +15,7 @@ async function deleteExisting() {
 
 async function seed() {
     try {
-        await database.category.createMany({
+        await database.LMSCategory.createMany({
             data: [
                 {name: "Computer Science"},
                 {name: "Music"},
