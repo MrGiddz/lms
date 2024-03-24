@@ -8,7 +8,6 @@ import { db } from "@/lib/db";
 
 const Courses = async () => {
   const {userId} = auth();
-  console.log({userId})
 
 
   if(!userId) {

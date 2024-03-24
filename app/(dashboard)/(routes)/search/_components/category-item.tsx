@@ -21,7 +21,6 @@ const CategoryItem = ({ label, value, icon: Icon }: CategoryItemProps) => {
 
   const isSelected = currentCategoryId === value;
 
-  // console.log({pathname, currentCategoryId, value, isSelected})
 
   const onClick = () => {
     const url = qs.stringifyUrl(

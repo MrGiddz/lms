@@ -54,7 +54,7 @@ const ChapterAccessForm = ({
   const { isValid, isSubmitting } = form.formState;
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log({ courseId, chapterId });
+
     try {
       await axios.patch(
         `/api/courses/${courseId}/chapters/${chapterId}`,

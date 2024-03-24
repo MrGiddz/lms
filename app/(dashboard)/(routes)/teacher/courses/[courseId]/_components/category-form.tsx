@@ -67,7 +67,6 @@ const CategoryForm = ({
     (option) => option.value === initialData.categoryId
   );
 
-  // console.log({options})
 
   return (
     <div className="mt-6 border bg-slate-100 rounded-md p-4">
@@ -105,7 +104,6 @@ const CategoryForm = ({
               control={form.control}
               name="categoryId"
               render={({ field }) => {
-                console.log({field})
                 return (
                 <FormItem>
                   <FormControl>
